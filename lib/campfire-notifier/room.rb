@@ -2,14 +2,31 @@ module CampfireNotifier
   class Room
     def initialize(room)
       @room = room
+      @last_message_id = nil
     end
 
     def method_missing(meth, *args, &block)
       @room.send(meth, *args, &block)
     end
 
-    def last_checked_at
-      
+    def check!
+      messages = @room.recent(limit: 100, since_message_id: @last_message_id)
+      messages.each do |msg|
+        check_for_notifications(msg.body)
+      end
+
+      return if messages.size == 0
+      @last_message_id = messages.last.id
+    end
+
+    private
+
+    def check_for_notifications(message)
+      Config.people.each do |person|
+        if person.triggered_by?(message)
+          person.notify!(message)
+        end
+      end
     end
   end
 end

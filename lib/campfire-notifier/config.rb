@@ -8,6 +8,12 @@ module CampfireNotifier
       @notifier ||= YAML.load(File.read(ENV['CAMPFIRE_NOTIFIER_CONFIG']))
     end
 
+    def people
+      @people ||= get['people'].map do |name, config|
+        Person.new(name, config)
+      end
+    end
+
     def campfire_subdomain
       ENV['CAMPFIRE_SUBDOMAIN']
     end
