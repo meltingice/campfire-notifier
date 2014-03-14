@@ -5,7 +5,3 @@ gem 'aws-sdk', '~> 1.36'
 gem 'rake'
 gem 'rufus-scheduler', '~> 3.0'
 gem 'tinder', github: 'collectiveidea/tinder'
-
-group :development do
-  gem 'dotenv'
-end

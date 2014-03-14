@@ -23,6 +23,8 @@ module CampfireNotifier
           room.check!
         end
       end
+
+      @scheduler.join
     end
   end
 end

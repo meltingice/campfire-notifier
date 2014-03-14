@@ -5,7 +5,7 @@ module CampfireNotifier
     extend self
 
     def get
-      @notifier ||= YAML.load(File.read(ENV['CAMPFIRE_NOTIFIER_CONFIG']))
+      @notifier ||= YAML.load(File.read(ENV['CAMPFIRE_NOTIFIER_CONFIG'] || 'config/config.yml'))
     end
 
     def people
@@ -15,11 +15,11 @@ module CampfireNotifier
     end
 
     def campfire_subdomain
-      ENV['CAMPFIRE_SUBDOMAIN']
+      get['campfire_subdomain']
     end
 
     def campfire_token
-      ENV['CAMPFIRE_TOKEN']
+      get['campfire_token']
     end
   end
 end
