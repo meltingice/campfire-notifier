@@ -4,7 +4,7 @@ module CampfireNotifier
       @name = name
       @phone = config['phone']
       @triggers = config['triggers'].map do |t|
-        Regexp.new("\b#{t}\b")
+        Regexp.new("\\b#{t}\\b")
       end
     end
 
@@ -18,7 +18,7 @@ module CampfireNotifier
 
     def notify!(message)
       puts "Notifying #{@name} at #{@phone}:"
-      puts message
+      puts message.truncate(140)
     end
   end
 end

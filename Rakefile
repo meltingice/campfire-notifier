@@ -5,7 +5,13 @@ task :environment do
 end
 
 namespace :notifier do
-  task :watch => :environment do
-    Rooms.new.watch!
+  desc "Starts listening for notification triggers"
+  task :listen => :environment do
+    CampfireNotifier::Rooms.listen!
+  end
+
+  desc "Checks all rooms for a notification trigger and exits"
+  task :check => :environment do
+    CampfireNotifier::Rooms.new.each(&:check!)
   end
 end
