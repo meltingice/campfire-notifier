@@ -10,7 +10,7 @@ The config file looks like this:
 
 ``` yaml
 # How often we should check the campfire rooms for updates
-schedule: '1m'
+schedule: 1m
 
 # The campfire credentials
 campfire_subdomain: awesome-co
