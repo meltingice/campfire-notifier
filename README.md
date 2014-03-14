@@ -2,6 +2,8 @@
 
 Provides SMS notifications for your Campfire rooms using Amazon SNS. Notifications are sent based on configurable triggers.
 
+**NOTE:** this project isn't hooked up with Amazon SNS yet.
+
 ## Configuration
 
 All configuration is done in `config/config.yml`. If needed, you can change the configuration file location by overriding it with the `CAMPFIRE_NOTIFIER_CONFIG` environment variable.
