@@ -16,14 +16,16 @@ module CampfireNotifier
       false
     end
 
-    def notify!(message)
+    def notify!(room, message)
+      message = "[#{room.name}] #{message.user.name}: #{message.body}".truncate(140)
+      
       puts "Notifying #{@name} at #{@phone}:"
-      puts message.truncate(140)
+      puts message
 
       Twilio.client.account.messages.create({
         from: Twilio.from_number,
         to: @phone,
-        body: message.truncate(140)
+        body: message
       })
     end
   end

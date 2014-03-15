@@ -13,7 +13,7 @@ module CampfireNotifier
       puts "Checking #{@room.name}..."
       messages = @room.recent(limit: 100, since_message_id: @last_message_id)
       messages.each do |msg|
-        check_for_notifications(msg.body)
+        check_for_notifications(msg)
       end
 
       return if messages.size == 0
@@ -24,8 +24,8 @@ module CampfireNotifier
 
     def check_for_notifications(message)
       Config.people.each do |person|
-        if person.triggered_by?(message)
-          person.notify!(message)
+        if person.triggered_by?(message.body)
+          person.notify!(self, message)
         end
       end
     end
