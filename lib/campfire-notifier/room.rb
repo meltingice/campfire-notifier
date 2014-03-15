@@ -10,7 +10,7 @@ module CampfireNotifier
     end
 
     def check!
-      puts "Checking #{@room.name}..."
+      CampfireNotifier.logger.info "Checking #{@room.name}..."
       messages = @room.recent(limit: 50, since_message_id: @last_message_id)
       messages.each do |msg|
         check_for_notifications(msg)

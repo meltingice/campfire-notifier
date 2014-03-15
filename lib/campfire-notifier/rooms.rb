@@ -18,6 +18,7 @@ module CampfireNotifier
     end
 
     def listen!
+      CampfireNotifier.logger.debug "Starting schedule..."
       @scheduler.every(Config.get['schedule']) do
         @rooms.each do |room|
           room.check!
