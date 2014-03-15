@@ -1,8 +1,6 @@
 # Campfire Notifier
 
-Provides SMS notifications for your Campfire rooms using Amazon SNS. Notifications are sent based on configurable triggers.
-
-**NOTE:** this project isn't hooked up with Amazon SNS yet.
+Provides SMS notifications for your Campfire rooms using Twilio. Notifications are sent based on configurable triggers.
 
 ## Configuration
 
@@ -18,16 +16,21 @@ schedule: 1m
 campfire_subdomain: awesome-co
 campfire_token: 02ed8f207b2935fo37bnasf17b7c479408fb37687
 
+# The Twilio credentials
+twilio_account_sid: ACe40lN63sb0d5273ef8ej1a98ad0159ff
+twilio_auth_token: 69d9KnYT5b539aa1a7eVB4S6f0e835f3
+twilio_number: +1 123-456-7890
+
 # Array of people we want to notify
 people:
   Ryan:
-    phone: +1 (123) 456-7890
+    phone: +1 123-456-7890
     triggers:
       - RL
       - Ryan
       - LeFevre
   Kelly:
-    phone: +1 (890) 123-4567
+    phone: +1 890-123-4567
     triggers:
       - KS
       - Kelly

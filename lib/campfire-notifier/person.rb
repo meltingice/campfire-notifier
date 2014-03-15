@@ -19,6 +19,12 @@ module CampfireNotifier
     def notify!(message)
       puts "Notifying #{@name} at #{@phone}:"
       puts message.truncate(140)
+
+      Twilio.client.account.messages.create({
+        from: Twilio.from_number,
+        to: @phone,
+        body: message.truncate(140)
+      })
     end
   end
 end
