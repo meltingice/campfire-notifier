@@ -12,6 +12,6 @@ namespace :notifier do
 
   desc "Checks all rooms for a notification trigger and exits"
   task :check => :environment do
-    CampfireNotifier::Rooms.new(always_notify: true).each(&:check!)
+    CampfireNotifier::Rooms.new(always_notify: true).check_all!
   end
 end

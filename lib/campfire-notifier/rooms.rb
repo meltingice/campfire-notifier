@@ -18,14 +18,21 @@ module CampfireNotifier
     end
 
     def listen!
+      CampfireNotifier.logger.debug "Running initial check..."
+      check_all!
+
       CampfireNotifier.logger.debug "Starting schedule..."
       @scheduler.every(Config.get['schedule']) do
-        @rooms.each do |room|
-          room.check!
-        end
+        check_all!
       end
 
       @scheduler.join
+    end
+
+    def check_all!
+      @rooms.each do |room|
+        room.check!
+      end
     end
   end
 end
