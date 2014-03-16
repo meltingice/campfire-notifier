@@ -6,10 +6,10 @@ module CampfireNotifier
       self.new.listen!
     end
 
-    def initialize
+    def initialize(opts = {})
       @scheduler = Rufus::Scheduler.new
       @rooms = Campfire.client.rooms.map do |room|
-        Room.new(room)
+        Room.new(room, opts)
       end
     end
 

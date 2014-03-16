@@ -1,8 +1,9 @@
 module CampfireNotifier
   class Room
-    def initialize(room)
+    def initialize(room, opts = {})
       @room = room
       @last_message_id = nil
+      @options = opts
     end
 
     def method_missing(meth, *args, &block)
@@ -23,11 +24,21 @@ module CampfireNotifier
     private
 
     def check_for_notifications(message)
+      return unless should_notify?
+
       Config.people.each do |person|
         if person.triggered_by?(message.body)
           person.notify!(self, message)
         end
       end
+    end
+
+    def should_notify?
+      @options[:always_notify] || !is_initial_request?
+    end
+
+    def is_initial_request?
+      @last_message_id.nil?
     end
   end
 end
