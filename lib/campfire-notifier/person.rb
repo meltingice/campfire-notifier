@@ -1,10 +1,10 @@
 module CampfireNotifier
   class Person
-    attr_reader :name, :phone
+    attr_reader :name, :config
 
     def initialize(name, config)
       @name = name
-      @phone = config['phone']
+      @config = config
       @triggers = config['triggers'].map do |t|
         Regexp.new("\\b#{t}\\b")
       end

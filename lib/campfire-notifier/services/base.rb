@@ -18,7 +18,11 @@ module CampfireNotifier
       end
 
       def formatted_message
-        "[#{room.name}] #{message.user.name}: #{message.body}"
+        "[#{room.name}] #{triggered_by_user}: #{message.body}"
+      end
+
+      def triggered_by_user
+        message.user.name
       end
     end
   end

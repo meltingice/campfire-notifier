@@ -9,7 +9,7 @@ module CampfireNotifier
 
         client.account.messages.create({
           from: config['phone_number'],
-          to: person.phone,
+          to: person.config['phone'],
           body: formatted_message.truncate(140)
         })
       end
