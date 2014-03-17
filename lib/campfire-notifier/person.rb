@@ -1,5 +1,7 @@
 module CampfireNotifier
   class Person
+    attr_reader :name, :phone
+
     def initialize(name, config)
       @name = name
       @phone = config['phone']
@@ -17,16 +19,7 @@ module CampfireNotifier
     end
 
     def notify!(room, message)
-      message = "[#{room.name}] #{message.user.name}: #{message.body}".truncate(140)
-      
-      CampfireNotifier.logger.info "Notifying #{@name} at #{@phone}:"
-      CampfireNotifier.logger.info message
-
-      Twilio.client.account.messages.create({
-        from: Twilio.from_number,
-        to: @phone,
-        body: message
-      })
+      Service.active.new(self, *args).notify!
     end
   end
 end

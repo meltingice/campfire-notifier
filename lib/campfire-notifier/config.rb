@@ -13,13 +13,5 @@ module CampfireNotifier
         Person.new(name, config)
       end
     end
-
-    def campfire_subdomain
-      get['campfire_subdomain']
-    end
-
-    def campfire_token
-      get['campfire_token']
-    end
   end
 end
