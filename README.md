@@ -5,6 +5,12 @@ Provides notifications based on configurable triggers for your Campfire rooms. N
 * Twilio
 * Pushover
 
+## Installation
+
+1. Clone this repository to the computer/server where you want to run this service.
+2. Run `bundle install`
+3. Create your configuration (instructions below).
+
 ## Configuration
 
 All configuration is done in `config/config.yml`. If needed, you can change the configuration file location by overriding it with the `CAMPFIRE_NOTIFIER_CONFIG` environment variable.
