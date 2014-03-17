@@ -19,7 +19,7 @@ module CampfireNotifier
     end
 
     def notify!(room, message)
-      Service.active.new(self, room, message).notify!
+      Service.for(self).new(self, room, message).notify!
     end
   end
 end

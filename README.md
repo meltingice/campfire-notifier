@@ -12,19 +12,30 @@ The config file looks like this:
 # How often we should check the campfire rooms for updates
 schedule: 1m
 
+# The default notification service. Can be overriden per user.
+notification_service: Twilio
+
 # The campfire credentials
-campfire_subdomain: awesome-co
-campfire_token: 02ed8f207b2935fo37bnasf17b7c479408fb37687
+campfire:
+  subdomain: awesome-co
+  api_token: 02ed8f207b2935fo37bnasf17b7c479408fb37687
 
-# The Twilio credentials
-twilio_account_sid: ACe40lN63sb0d5273ef8ej1a98ad0159ff
-twilio_auth_token: 69d9KnYT5b539aa1a7eVB4S6f0e835f3
-twilio_number: +1 123-456-7890
+# Twilio credentials (if applicable)
+twilio:
+  account_sid: ACe40lN63sb0d5273ef8ej1a98ad0159ff
+  auth_token: 69d9KnYT5b539aa1a7eVB4S6f0e835f3
+  phone_number: +1 123-456-7890
 
-# Array of people we want to notify
+# Pushover credentials (if applicable)
+pushover:
+  title: My Company Chat
+  api_token: aX0pL7Hb5rBPC8W5fPfqkVjHYix6H2
+
+# People we want to notify
 people:
   Ryan:
-    phone: +1 123-456-7890
+    notification_service: Pushover
+    pushover_token: eadz98FTGzPZJI87HbzX8RuXz9EP9h
     triggers:
       - RL
       - Ryan
