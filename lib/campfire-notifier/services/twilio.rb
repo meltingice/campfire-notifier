@@ -5,13 +5,13 @@ module CampfireNotifier
     
       def notify!
         CampfireNotifier.logger.info "Notifying #{person.name} at #{person.phone}:"
-        CampfireNotifier.logger.info message
+        CampfireNotifier.logger.info formatted_message
 
-        # Twilio.client.account.messages.create({
-        #   from: config['phone_number'],
-        #   to: person.phone,
-        #   body: formatted_message.truncate(140)
-        # })
+        client.account.messages.create({
+          from: config['phone_number'],
+          to: person.phone,
+          body: formatted_message.truncate(140)
+        })
       end
 
       private
