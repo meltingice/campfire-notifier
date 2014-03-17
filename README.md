@@ -1,6 +1,9 @@
 # Campfire Notifier
 
-Provides SMS notifications for your Campfire rooms using Twilio. Notifications are sent based on configurable triggers.
+Provides notifications based on configurable triggers for your Campfire rooms. Notifications can be sent using:
+
+* Twilio
+* Pushover
 
 ## Configuration
 
